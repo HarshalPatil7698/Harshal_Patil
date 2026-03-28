@@ -253,8 +253,22 @@
             border-top: 1px solid #1e293b;
         }
 
+        /* CHANGED: Fixed visibility for Mobile Buttons */
         @media (max-width: 768px) {
-            nav .nav-links { display: none; }
+            nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+            nav .nav-links { 
+                display: flex; 
+                flex-wrap: wrap; 
+                justify-content: center;
+                margin-top: 10px;
+            }
+            nav .nav-links a {
+                margin: 5px 10px;
+                font-size: 0.85rem;
+            }
             .hero h1 { font-size: 45px; }
         }
     </style>
@@ -417,7 +431,7 @@
             <i class="fab fa-whatsapp"></i>
         </a>
                 <a href="https://github.com/HarshalPatil7698"><i class="fab fa-github"></i></a>
-                <a href="harshalp.pratap@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:harshalp.pratap@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
         </section>
     </div>
@@ -466,4 +480,4 @@
         });
     </script>
 </body>
-</html>s
+</html>
