@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshal Patil | Data Analyst Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        * { box-sizing: border-box; }
+        
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #0f172a;
+            color: #cbd5e1;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        nav .logo { font-weight: 700; color: white; font-size: 1.2rem; }
+
+        nav .nav-links a {
+            color: #cbd5e1;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav .nav-links a:hover { color: #38bdf8; }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: clamp(40px, 8vw, 70px); color: white; margin: 0; }
+        .hero span { color: #38bdf8; }
+
+        .typewriter {
+            color: #38bdf8;
+            font-size: 24px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #38bdf8;
+            margin: 10px auto;
+        }
+
+        /* Experience Timeline Styles */
+        .experience-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .experience-container::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #38bdf8;
+            box-shadow: 0 0 10px #38bdf8;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-left: 50px;
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            transition: 0.3s;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            background: #0f172a;
+            border: 3px solid #38bdf8;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .experience-item:hover {
+            border: 1px solid #38bdf8;
+            transform: translateX(5px);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .exp-header h3 { margin: 0; color: white; font-size: 1.2rem; }
+        .exp-header span { color: #38bdf8; font-weight: 500; font-size: 0.9rem; }
+
+        .exp-list { padding-left: 20px; margin-top: 10px; color: #94a3b8; }
+        .exp-list li { margin-bottom: 8px; font-size: 0.95rem; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .skill {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill:hover { transform: translateY(-5px); border: 1px solid #38bdf8; }
+        .skill i { font-size: 32px; color: #38bdf8; margin-bottom: 10px; }
+
+        .filter-buttons { text-align: center; margin-bottom: 30px; }
+        .filter-buttons button {
+            margin: 5px;
+            padding: 8px 18px;
+            border: 1px solid #38bdf8;
+            border-radius: 6px;
+            background: transparent;
+            color: #38bdf8;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .filter-buttons button:hover, .filter-buttons button.active {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .project:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .project h3 { color: white; margin-top: 15px; }
+        .project a { color: #38bdf8; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+
+        /* Certificate Styles */
+        .cert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .cert {
+            background: #1e293b;
+            padding: 0; /* Removing padding to allow link to fill space */
+            border-radius: 8px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .cert:hover {
+            border: 1px solid #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        .cert a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 20px;
+            color: inherit;
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cert a::before { content: '🏆'; font-size: 1.2rem; }
+
+        .contact { text-align: center; margin-top: 50px; }
+        .contact a { margin: 0 15px; font-size: 28px; color: #38bdf8; transition: 0.3s; }
+        .contact a:hover { color: white; }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 50px;
+            border-top: 1px solid #1e293b;
+        }
+
+        @media (max-width: 768px) {
+            nav .nav-links { display: none; }
+            .hero h1 { font-size: 45px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <nav>
+        <div class="logo">HP</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#certs">Certificates</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Harshal <span>Patil</span></h1>
+        <div class="typewriter"><span id="typed"></span></div>
+    </section>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <p style="text-align:center; max-width:800px; margin:auto; line-height: 1.8;">
+               I’m a data enthusiast with 2.8+ years of professional experience, currently working as a Senior Executive at Jio. I specialize in Excel, SQL, and Power BI, using data analysis and visualization to transform complex datasets into meaningful insights that support better decision-making.
+            </p>
+        </section>
+
+        <section id="experience" style="margin-top: 80px;">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-container">
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <h3>Senior Executive</h3>
+                        <span>Reliance Jio Infocomm Limited | June 2025 - Present</span>
+                    </div>
+                    <ul class="exp-list">
+                        <li>Developed and maintained automated Power BI dashboards to monitor revenue leakage and fraud patterns, reducing manual reporting time by 85% and increasing data visibility for stakeholders.</li>
+                        <li>Automated weekly revenue reconciliation reports using Power Query and DAX, reducing manual processing time by 20+ hours per week.</li>
+                        <li>Prevented significant revenue leakage by identifying and resolving 15+ critical billing logic bugs during the UAT phase of 50+ product launches, including the high-profile <b>Jio-Gemini AI integration</b>.</li>
+                        <li>Managed end-to-end data validation for bundled OTT offerings (JioHotstar, Netflix), reconciling partner subscription data with billing systems to improve entitlement accuracy.</li>
+                        <li>Utilized SQL to query large-scale telecommunications datasets, identifying anomalies and trends in subscriber behavior to mitigate financial risks.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <h3>Project Engineer</h3>
+                        <span>Wipro Limited | March 2024 - Feb 2025</span>
+                    </div>
+                    <ul class="exp-list">
+                       <li>Performed exploratory data analysis on policyholder and claims datasets for <b>Aviva Life Insurance</b> to identify premium payment trends and improve retention.</li>
+                        <li>Executed rigorous data validation and cleansing on high-volume insurance records, ensuring 100% data integrity for financial audits.</li>
+                        <li>Conducted detailed data cleansing in Excel, leading to a 20% increase in data accuracy and consistency across large datasets.</li>
+                        <li>Analyzed historical claims data using SQL and Excel to identify seasonal trends in policy lapses, providing actionable insights for the customer retention team.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" style="margin-top: 80px;">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill"><i class="fas fa-database"></i><p>SQL</p></div>
+                <div class="skill"><i class="fas fa-chart-bar"></i><p>Power BI</p></div>
+                <div class="skill"><i class="fas fa-table"></i><p>Advanced Excel</p></div>
+                <div class="skill"><i class="fab fa-python"></i><p>Python</p></div>
+                 <div class="skill"><i class="fab fa-microsoft"></i><p>Azure DevOps</p></div>
+                <div class="skill"><i class="fas fa-eye"></i><p>Data Visualization</p></div>
+<div class="skill"><i class="fas fa-sync-alt"></i><p>ETL Processing</p></div>
+<div class="skill"><i class="fas fa-search-dollar"></i><p>Fraud Analytics</p></div>
+<div class="skill"><i class="fas fa-lightbulb"></i><p>Data Storytelling</p></div>
+                
+            </div>
+        </section>
+
+        <section id="projects" style="margin-top: 80px;">
+            <h2 class="section-title">Projects</h2>
+            <div class="filter-buttons">
+                <button class="active" onclick="filterSelection('all', this)">All</button>
+                <button onclick="filterSelection('powerbi', this)">Power BI</button>
+                <button onclick="filterSelection('excel', this)">Excel</button>
+                <button onclick="filterSelection('sql', this)">SQL / Other</button>
+            </div>
+
+            <div class="projects">
+                <div class="project excel">
+                    <h3>E-Commerce Sales Analysis</h3>
+                    <p>End-to-end dashboard tracking order trends and customer demographics.</p>
+                    <a href="https://www.novypro.com/project/ecommerce-sales-dashboard-power-bi-2">Live Link</a>
+                </div>
+                <div class="project powerbi">
+    <h3>Samsung Supply Chain & Logistics Analytics</h3>
+    <p>End-to-end logistics dashboard analyzing $186M+ revenue, supplier lead times, and inventory stock levels.</p>
+    <a href="https://github.com/HarshalPatil7698/Supply-Chain-Logistics-Analytics-Dashboard">View Report</a>
+</div>
+                <div class="project powerbi">
+                    <h3>Sales & Financial Analytics</h3>
+
+                    <p>FMCG domain report focusing on net sales and profit margins.</p>
+
+                    <a href="https://github.com/HarshalPatil7698/Sales-and-Financial-Analytics-Using-Excel?tab=readme-ov-file">View Report</a>
+                </div>
+                <div class="project powerbi">
+                   <h3>IPL Analysis Dashboard</h3>
+                    <p>Interactive Power BI dashboard for 2008-2024 match statistics.</p>
+                    <a href="https://www.novypro.com/project/ipl-analysis-dashboard-power-bi-1">Live Link</a>
+                </div>
+                <div class="project powerbi">
+                    <h3>Adventure Work Cycle Report</h3>
+                    <p>Detailed manufacturing and sales analytics for bike products.</p>
+                    <a href="https://www.novypro.com/project/adventure-work-cycle-report">Live Link</a>
+                </div>
+                <div class="project sql">
+                    <h3>Insurance Portal Wireframes</h3>
+                    <p>User-service portal prototypes for Aviva Life Insurance clients.</p>
+                    <a href="https://github.com/HarshalPatil7698/Prototype_Wireframe_Project/tree/main">View Case Study</a>
+                </div>
+                <div class="project excel">
+                    <h3>Store Annual Sales Report</h3>
+                    <p>Comparing annual performance metrics across regional stores.</p>
+                    <a href="https://github.com/HarshalPatil7698/Store-Annual-Sales-Report">View Project</a>
+                </div>
+                <div class="project powerbi">
+                    <h3>Customer Service Dashboard</h3>
+                    <p>Monitoring KPI performance and resolution times for support teams.</p>
+                    <a href="https://github.com/HarshalPatil7698/Customer-Service-Dashboard-Using-Excel">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="certs" style="margin-top: 80px;">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-list">
+                <div class="cert"><a href="https://drive.google.com/file/d/1CKt5Kxt_mokqgEIqvzDkCwljSyUSScvV/view" target="_blank">Google Data Analytics Professional Certificate</a></div>
+                <div class="cert"><a href="https://drive.google.com/file/d/19B-mdHl2Z6fqvMywcCbQlvTkzq7dl2PD/view" target="_blank">Accenture Data Analytics Job Simulation</a></div>
+                <div class="cert"><a href="https://drive.google.com/file/d/1bW3RqYGuSUZUtDrvDbtYy0XtehRXWzDD/view" target="_blank">HackerRank SQL Baic </a></div>
+                  <div class="cert"><a href="https://drive.google.com/file/d/1bWRajbfYN4BMhHRxe16HI7uLI8i7HyAt/view" target="_blank">HackerRank SQL Intermediate</a></div>
+                <div class="cert"><a href="https://drive.google.com/file/d/1bUe0oJrStUWcZoNiY9ybXE5UTDYoBkcn/view" target="_blank">Codebasics Excel for Data Analytics</a></div>
+                <div class="cert"><a href="https://drive.google.com/file/d/105uicoPFPIMsMijpnxV09zJ3y06QR-Kr/view" target="_blank">Power BI Desktop (Maven Analytics)</a></div>
+                <div class="cert"><a href="https://drive.google.com/file/d/1WFL2ct0KmW7lPRVKfrCquhtbWAYFLmjK/view" target="_blank">Agile Project Management</a></div>
+                <div class="cert"><a href="https://drive.google.com/file/d/1CD0lBUqM-7Dp7Sb5X-wkS4xNunTN75Kx/view" target="_blank">MySQL for Data Science</a></div>
+            </div>
+        </section>
+
+        <section id="contact" style="margin-top: 80px;">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact">
+                <a href="https://www.linkedin.com/in/harshal-patil-a36181208/"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+918379859689" title="Call Me">
+            <i class="fas fa-phone-alt"></i>
+            <a href="https://wa.me/918379859689?text=Hello%20Harshal,%20I%20saw%20your%20portfolio..." target="_blank" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+                <a href="https://github.com/HarshalPatil7698"><i class="fab fa-github"></i></a>
+                <a href="harshalp.pratap@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Harshal Patil | Mechanical Engineer & Data Enthusiast</p>
+    </footer>
+
+    <script>
+        const texts = ["Data Analyst", "Senior Executive - Jio", "Power BI Developer", "SQL Enthusiast"];
+        let count = 0; let index = 0; let current = ""; let letter = "";
+
+        (function type() {
+            if (count === texts.length) count = 0;
+            current = texts[count];
+            letter = current.slice(0, ++index);
+            document.getElementById("typed").textContent = letter;
+            if (letter.length === current.length) {
+                count++; index = 0;
+                setTimeout(type, 2000); 
+            } else {
+                setTimeout(type, 100);
+            }
+        })();
+
+        function filterSelection(c, btn) {
+            let x = document.getElementsByClassName("project");
+            let buttons = document.querySelectorAll(".filter-buttons button");
+            buttons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            for (let i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                if (c === "all" || x[i].classList.contains(c)) x[i].style.display = "block";
+            }
+        }
+
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 60 },
+                color: { value: "#38bdf8" },
+                size: { value: 2 },
+                move: { speed: 1.5 },
+                line_linked: { enable: true, opacity: 0.1 }
+            }
+        });
+    </script>
+</body>
+</html>s
